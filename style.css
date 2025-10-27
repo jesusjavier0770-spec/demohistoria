@@ -1,120 +1,182 @@
-/* --- Estilos base --- */
+/* --- RESET & BASE --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f8f8;
-    color: #333;
-    line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* --- Encabezado --- */
-header {
-    background-color: #8b0000;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
+/* --- NAVBAR --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #8b0000;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.8rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color .3s;
+}
+.nav-links a:hover {
+  color: #8b0000;
 }
 
-header h1 {
-    margin: 0.5rem 0;
-}
-
-.menu {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.menu li {
-    margin: 0.5rem;
-}
-
-.menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.menu a:hover {
-    text-decoration: underline;
-}
-
-/* --- Hero --- */
+/* --- HERO / CARRUSEL --- */
 .hero {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9d/Lima_1821.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 5rem 1rem;
-    position: relative;
+  margin-top: 70px; /* espacio para navbar */
+}
+.carousel {
+  position: relative;
+  height: 80vh;
+  min-height: 400px;
+  overflow: hidden;
+}
+.carousel-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity .8s ease-in-out;
+}
+.carousel-item.active {
+  opacity: 1;
+}
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+.hero-content {
+  color: white;
+  max-width: 700px;
+}
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+.btn {
+  background-color: #ffd700;
+  color: #8b0000;
+  padding: .8rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color .3s, transform .3s;
+}
+.btn:hover {
+  background-color: #ffcc00;
+  transform: scale(1.05);
 }
 
-.hero::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.4);
+/* --- SECCIONES --- */
+.section {
+  padding: 5rem 2rem;
+  text-align: center;
 }
-
-.hero-texto {
-    position: relative;
-    z-index: 2;
+.section h2 {
+  font-size: 2.2rem;
+  color: #8b0000;
+  margin-bottom: 2rem;
 }
-
-.boton {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.7rem 1.5rem;
-    background-color: #ffd700;
-    color: #8b0000;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-.boton:hover {
-    background-color: #f0c300;
-}
-
-/* --- Contenido --- */
 .contenido {
-    padding: 2rem;
-    max-width: 900px;
-    margin: auto;
-    background: white;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  text-align: left;
 }
-
 .contenido img {
-    width: 100%;
-    height: auto;
-    margin-top: 1rem;
-    border-radius: 5px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  transition: transform .4s ease;
+}
+.contenido img:hover {
+  transform: scale(1.02);
+}
+.contenido p {
+  margin-bottom: 1rem;
+  text-align: justify;
 }
 
-/* --- Footer --- */
+/* --- FOOTER --- */
 footer {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #222;
-    color: #ddd;
+  background-color: #111;
+  color: #ddd;
+  text-align: center;
+  padding: 2rem;
 }
 
-/* --- Responsive --- */
+/* --- ANIMACIONES --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .hero {
-        padding: 3rem 1rem;
-    }
-    .menu {
-        flex-direction: column;
-    }
-    .menu li {
-        margin: 0.3rem 0;
-    }
+  .nav-links {
+    display: none; /* podrías añadir un menú hamburguesa si deseas */
+  }
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .section {
+    padding: 3rem 1rem;
+  }
+  .contenido {
+    padding: 1.5rem;
+  }
 }
